@@ -1,8 +1,8 @@
 # projeto/views.py
 from django.shortcuts import render
-from .models import Projeto
+from ..models import Projeto
 from rest_framework import generics
-from .serializers import ProjetoSerializer
+from ..serializers import ProjetoSerializer
 class ProjetoCreate(generics.CreateAPIView):
 # API endpoint that allows creation of a new projeto
     queryset = Projeto.objects.all(),

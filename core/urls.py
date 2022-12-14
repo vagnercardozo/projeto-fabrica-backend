@@ -1,9 +1,10 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import ProjetoViewSet
-router = DefaultRouter()
-router.register('projetos', ProjetoViewSet)
-
+# projeto/urls.py
+from django.urls import include, path
+from .views import ProjetoCreate, ProjetoList, ProjetoDetail, ProjetoUpdate, ProjetoDelete
 urlpatterns = [
-    path("", include(router.urls))
+    path('create/', ProjetoCreate.as_view(), name='create-projeto'),
+    path('', ProjetoList.as_view()),
+    path('<int:pk>/', ProjetoDetail.as_view(), name='retrieve-projeto'),
+    path('update/<int:pk>/', ProjetoUpdate.as_view(), name='update-projeto'),
+    path('delete/<int:pk>/', ProjetoDelete.as_view(), name='delete-projeto'),
 ]
